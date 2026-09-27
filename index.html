@@ -1532,7 +1532,7 @@
     </section>
 
     <!-- ================= Style Bassnèré ================= -->
-    <section class="section section--alt" aria-labelledby="home-feature-title">
+    <section class="section section--alt" id="home-feature" aria-labelledby="home-feature-title">
       <div class="wrap">
         <div class="home-feature">
           <div class="home-feature__photo">
@@ -2227,14 +2227,14 @@
 
     /* 2. Navigation par PAGES : accueil court, catalogue & devis sur leurs propres pages */
     const PAGES = {
-      'accueil': ['accueil', 'nouveautes', 'ordonnance'],
+      'accueil': ['accueil', 'home-feature', 'nouveautes', 'ordonnance'],
       'catalogue': ['catalogue'],
       'verres': ['verres', 'expertise', 'guide'],
       'rendez-vous': ['rendez-vous'],
       'devis': ['devis'],
       'contact': ['contact']
     };
-    const PAGE_IDS = ['accueil', 'nouveautes', 'ordonnance', 'catalogue', 'verres', 'expertise', 'guide', 'rendez-vous', 'devis', 'contact'];
+    const PAGE_IDS = ['accueil', 'home-feature', 'nouveautes', 'ordonnance', 'catalogue', 'verres', 'expertise', 'guide', 'rendez-vous', 'devis', 'contact'];
     const desktopNavLinks = $$('#site-nav a');
     const mobileNavLinks = $$('.mobile-nav-link');
 
