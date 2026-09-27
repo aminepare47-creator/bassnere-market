@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <title>Bassnèré Market — Fiche produit</title>
+  <link rel="icon" href="brand/logo-bassnere.jpg" onerror="this.onerror=null;this.src='brand/logo-bassnere.svg'" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold: #b8892f;
+      --gold-dark: #8f681d;
+      --gold-soft: #fbf5e8;
+      --gold-line: #e8d7ad;
+      --carbon: #0b0f19;
+      --carbon-soft: #151c2c;
+      --surface: #f4f6fb;
+      --white: #fff;
+      --line: #e2e8f0;
+      --ink: #111827;
+      --muted: #475569;
+      --ok: #0f766e;
+      --shadow: 0 18px 40px rgba(15, 23, 42, .12);
+      --radius: 22px;
+      --wrap: 1100px;
+      --pad: clamp(1rem, 4vw, 2rem);
+      --font: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      background: var(--surface);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--pad); }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar__inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      font-weight: 800;
+    }
+    .brand img {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 10px;
+      background: var(--white);
+      object-fit: contain;
+      border: 1px solid var(--line);
+      padding: 0.15rem;
+    }
+    .brand small {
+      display: block;
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      padding: .8rem 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .15s ease;
+    }
+    .btn--primary { background: var(--gold); color: #fff; box-shadow: 0 8px 22px rgba(184,137,47,.2); }
+    .btn--primary:hover { background: var(--gold-dark); }
+    .btn--ghost {
+      background: var(--white);
+      border-color: var(--line);
+      color: var(--ink);
+    }
+    .btn--ghost:hover { border-color: var(--gold); color: var(--gold-dark); }
+    .page {
+      padding: clamp(1.2rem, 3vw, 2.5rem) 0 3rem;
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: clamp(1rem, 2vw, 2rem);
+      align-items: start;
+    }
+    .card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .product-photo {
+      background: linear-gradient(180deg, #fff, #f8fafc);
+      padding: 1rem;
+    }
+    .product-photo__frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+    .product-photo__frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .product-info {
+      padding: clamp(1.1rem, 2vw, 2rem);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .74rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(1.8rem, 3vw, 3rem);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+    }
+    .price {
+      font-size: clamp(1.4rem, 2vw, 2.2rem);
+      font-weight: 800;
+      color: var(--ink);
+    }
+    .option-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .75rem;
+      margin-top: .25rem;
+    }
+    .price-option {
+      display: flex;
+      flex-direction: column;
+      gap: .15rem;
+      width: 100%;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      border-radius: 14px;
+      padding: .8rem .9rem;
+      cursor: pointer;
+      transition: all .15s ease;
+      text-align: left;
+    }
+    .price-option strong {
+      font-size: .9rem;
+      font-weight: 800;
+    }
+    .price-option span {
+      font-size: .8rem;
+      color: var(--muted);
+    }
+    .price-option.is-selected {
+      background: var(--gold-soft);
+      border-color: var(--gold);
+      box-shadow: 0 8px 18px rgba(184,137,47,.12);
+    }
+    .price-option.is-selected strong,
+    .price-option.is-selected span {
+      color: var(--gold-dark);
+    }
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      padding: .45rem .75rem;
+      border-radius: 999px;
+      background: var(--gold-soft);
+      color: var(--gold-dark);
+      border: 1px solid var(--gold-line);
+      font-size: .74rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .desc {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+    .cta-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+      margin-top: .25rem;
+    }
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: .75rem;
+      color: var(--muted);
+    }
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: .7rem;
+      line-height: 1.5;
+    }
+    .feature-list b { color: var(--ink); }
+    .icon {
+      font-size: 1.1rem;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+    .mini {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .mini-card {
+      display: flex;
+      gap: .75rem;
+      align-items: center;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 1rem;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.04);
+    }
+    .mini-card img {
+      width: 90px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+    }
+    .mini-card strong { display: block; }
+    .mini-card span { color: var(--muted); font-size: .85rem; }
+    @media (max-width: 760px) {
+      .layout { grid-template-columns: 1fr; }
+      .cta-wrap { flex-direction: column; }
+      .cta-wrap .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar__inner">
+      <a href="index.html#catalogue" class="brand">
+        <img src="brand/logo-bassnere.jpg" alt="Logo Bassnèré Market" onerror="this.onerror=null;this.src='brand/logo-bassnere.svg'" />
+        <div>
+          <div style="font-size:1rem;">Bassnèré Market</div>
+          <small>Ouagadougou</small>
+        </div>
+      </a>
+      <a class="btn btn--ghost" href="index.html#catalogue">← Retour au catalogue</a>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="wrap">
+      <div class="layout">
+        <section class="card product-photo">
+          <div class="product-photo__frame">
+            <img id="mainImage" src="images/lunettes/modele-01.jpg" alt="Produit Bassnèré Market" />
+          </div>
+        </section>
+
+        <section class="card product-info">
+          <div class="eyebrow">Monture premium</div>
+          <h1 id="title">Monture Bassnèré Market</h1>
+          <div class="price" id="price">0 FCFA</div>
+
+          <div class="option-grid" id="priceOptions" aria-label="Choisir le type de prix"></div>
+
+          <div class="meta" id="chips"></div>
+
+          <p class="desc" id="description">
+            Monture de qualité avec verre protecteur photochromique, anti-réfléchissant et anti-lumière bleue.
+          </p>
+
+          <div class="cta-wrap">
+            <a class="btn btn--primary" id="buyLink" href="https://wa.me/22657298844" target="_blank" rel="noopener">
+              Commander sur WhatsApp
+            </a>
+            <a class="btn btn--ghost" href="index.html#catalogue">Voir d'autres modèles</a>
+          </div>
+
+          <ul class="feature-list">
+            <li><span class="icon">✓</span> <div><b>Verre protecteur</b> : photochromique, anti-réfléchissant et anti-lumière bleue.</div></li>
+            <li><span class="icon">✓</span> <div><b>Finition premium</b> : monture moderne et confortable pour le quotidien.</div></li>
+            <li><span class="icon">✓</span> <div><b>Service boutique</b> : conseil et livraison à convenir avec Bassnèré Market.</div></li>
+          </ul>
+        </section>
+      </div>
+
+      <div class="mini" id="related"></div>
+    </div>
+  </main>
+
+  <script>
+    const seed = [
+      { id: 'b1', nom: 'Monture Browline Noir & Argent', description: 'Monture browline bicolore avec verre protecteur photochromique, anti-réfléchissant et anti-lumière bleue.', prix: 4000, genre: 'mixte', type: 'protecteur', forme: 'rect', disponible: true, image_url: 'images/lunettes/modele-01.jpg' },
+      { id: 'b2', nom: 'Monture Papillon Dorée', description: 'Monture papillon élégante avec verre protecteur photochromique, anti-réfléchissant et anti-lumière bleue.', prix: 4000, genre: 'femme', type: 'protecteur', forme: 'papillon', disponible: true, image_url: 'images/lunettes/modele-02.jpg' },
+      { id: 'b3', nom: 'Monture Rectangulaire GOOBA Noir & Or', description: 'Monture rectangulaire robuste avec verre protecteur photochromique, anti-réfléchissant et anti-lumière bleue.', prix: 4000, genre: 'homme', type: 'protecteur', forme: 'rect', disponible: true, image_url: 'images/lunettes/modele-05.jpg' },
+      { id: 'b4', nom: 'Monture Carrée PELME Noir', description: 'Monture carrée moderne avec verre protecteur photochromique, anti-réfléchissant et anti-lumière bleue.', prix: 4000, genre: 'mixte', type: 'protecteur', forme: 'carree', disponible: true, image_url: 'images/lunettes/modele-06.jpg' },
+      { id: 'b5', nom: 'Monture Browline Noir Fin', description: 'Monture browline fine avec verre protecteur photochromique, anti-réfléchissant et anti-lumière bleue.', prix: 4000, genre: 'mixte', type: 'protecteur', forme: 'rect', disponible: true, image_url: 'images/lunettes/modele-07.jpg' },
+      { id: 'b6', nom: 'Monture Titane Rectangulaire AOLAIDI', description: 'Monture rectangulaire en titane avec verre protecteur photochromique, anti-réfléchissant et anti-lumière bleue.', prix: 4000, genre: 'homme', type: 'protecteur', forme: 'rect', disponible: true, image_url: 'images/lunettes/modele-08.jpg' },
+      { id: 'b7', nom: 'Monture Rectangulaire PELME & Titane', description: 'Monture haut de gamme avec verre protecteur photochromique, anti-réfléchissant et anti-lumière bleue.', prix: 4000, genre: 'mixte', type: 'protecteur', forme: 'rect', disponible: true, image_url: 'images/lunettes/modele-11.jpg' }
+    ];
+
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id') || 'b1';
+    const item = seed.find(m => String(m.id) === String(id)) || seed[0];
+    const related = seed.filter(m => String(m.id) !== String(item.id)).slice(0, 3);
+    const priceChoices = [
+      { key: 'plastique', label: 'Avec plastique', price: Number(item.prix || 4000) },
+      { key: 'etui', label: 'Avec étui', price: 7000 }
+    ];
+    let selectedChoice = 'plastique';
+
+    const show = (s) => String(s ?? '');
+    const esc = (s) => show(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+    document.getElementById('mainImage').src = item.image_url || 'images/lunettes/modele-01.jpg';
+    document.getElementById('mainImage').alt = item.nom;
+    document.getElementById('title').textContent = item.nom;
+    document.getElementById('description').textContent = item.description || 'Monture Bassnèré Market.';
+
+    const priceOptions = document.getElementById('priceOptions');
+    function renderPriceChoice() {
+      const selected = priceChoices.find(opt => opt.key === selectedChoice) || priceChoices[0];
+      document.getElementById('price').textContent = selected.price.toLocaleString('fr-FR') + ' FCFA';
+      priceOptions.innerHTML = priceChoices.map(opt => `
+        <button type="button" class="price-option ${opt.key === selectedChoice ? 'is-selected' : ''}" data-choice="${opt.key}">
+          <strong>${opt.label}</strong>
+          <span>${opt.price.toLocaleString('fr-FR')} FCFA</span>
+        </button>
+      `).join('');
+
+      const buyLink = document.getElementById('buyLink');
+      const message = encodeURIComponent(
+        'Bonjour Bassnèré Market, je souhaite commander la monture : ' + item.nom + ' (' + selected.label + '). Est-elle disponible ?'
+      );
+      buyLink.href = 'https://wa.me/22657298844?text=' + message;
+    }
+
+    priceOptions.addEventListener('click', (event) => {
+      const button = event.target.closest('[data-choice]');
+      if (!button) return;
+      selectedChoice = button.dataset.choice;
+      renderPriceChoice();
+    });
+
+    renderPriceChoice();
+
+    const chips = document.getElementById('chips');
+    const labels = ['Verre protecteur', 'Photochromique', 'Anti-réfléchissant', 'Anti-lumière bleue'];
+    labels.forEach(label => {
+      const el = document.createElement('span');
+      el.className = 'chip';
+      el.textContent = label;
+      chips.appendChild(el);
+    });
+
+    const relatedEl = document.getElementById('related');
+    relatedEl.innerHTML = related.map(m => `
+      <a class="mini-card" href="product.html?id=${encodeURIComponent(m.id)}">
+        <img src="${esc(m.image_url || 'images/lunettes/modele-01.jpg')}" alt="${esc(m.nom)}" />
+        <div>
+          <strong>${esc(m.nom)}</strong>
+          <span>${Number(m.prix || 4000).toLocaleString('fr-FR')} FCFA</span>
+        </div>
+      </a>
+    `).join('');
+  </script>
+</body>
+</html>

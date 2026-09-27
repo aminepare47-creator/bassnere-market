@@ -1,0 +1,475 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <link rel="icon" href="brand/logo-bassnere.jpg" onerror="this.onerror=null;this.href='brand/logo-bassnere.svg'" />
+  <title>Administration — Bassnèré Market</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --teal: #b8892f;
+      --teal-dark: #8f681d;
+      --teal-soft: #fbf5e8;
+      --navy: #0e1c2f;
+      --navy-line: #24374f;
+      --sky: #eff4ff;
+      --bg: #f6f8fc;
+      --white: #ffffff;
+      --line: #e3e8f2;
+      --line-strong: #ccd5e4;
+      --ink: #0f172a;
+      --muted: #5b6478;
+      --red: #b91c1c;
+      --amber: #b45309;
+      --r-sm: 8px;
+      --r: 14px;
+      --r-lg: 20px;
+      --shadow-sm: 0 1px 2px rgba(15, 23, 42, .05), 0 6px 16px rgba(15, 23, 42, .05);
+      --shadow: 0 18px 44px rgba(15, 23, 42, .12);
+      --gap: clamp(1rem, 2.4vw, 1.75rem);
+      --pad-x: clamp(1rem, 4vw, 2rem);
+      --font: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; font-family: var(--font); font-size: 15px; line-height: 1.5; color: var(--ink); background: var(--bg); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    button { font: inherit; cursor: pointer; }
+    h1, h2, h3 { margin: 0; line-height: 1.2; }
+    p { margin: 0; }
+    .hidden { display: none !important; }
+    .wrap { width: 100%; max-width: 60rem; margin-inline: auto; padding-inline: var(--pad-x); }
+    .top { position: sticky; top: 0; z-index: 20; background: var(--navy); color: #fff; }
+    .top__inner { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap; min-height: 3.8rem; padding-block: .6rem; }
+    .top__brand { display: flex; align-items: center; gap: .6rem; font-weight: 800; font-size: 1rem; }
+    .top__brand img { width: 2rem; height: 2rem; border-radius: 6px; background: #fff; padding: .15rem; object-fit: contain; }
+    .top__links { display: flex; align-items: center; gap: .75rem; font-size: .88rem; }
+    .top__links a, .top__links button { color: #dbe6ff; background: none; border: 0; text-decoration: underline; padding: 0; }
+    main { padding-block: var(--gap); display: flex; flex-direction: column; gap: var(--gap); }
+    .card { background: var(--white); border: 1px solid var(--line); border-radius: var(--r-lg); padding: clamp(1rem, 2.6vw, 1.75rem); box-shadow: var(--shadow-sm); display: flex; flex-direction: column; gap: 1rem; }
+    .card--narrow { max-width: 26rem; margin-inline: auto; width: 100%; }
+    .note { border-radius: var(--r); padding: .85rem 1rem; font-size: .88rem; background: #fffbeb; border: 1px solid #fcd34d; color: var(--amber); }
+    .note code { background: rgba(0, 0, 0, .06); padding: .1rem .35rem; border-radius: 6px; }
+    .msg { font-size: .92rem; font-weight: 700; min-height: 1.4rem; }
+    .msg--ok { color: var(--teal); }
+    .msg--err { color: var(--red); }
+    .tabs { display: grid; grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr)); gap: .5rem; }
+    .tab { height: 2.75rem; border-radius: var(--r-sm); border: 1px solid var(--line); background: var(--white); font-weight: 700; font-size: .9rem; color: var(--muted); box-shadow: var(--shadow-sm); }
+    .tab.is-on { background: var(--navy); border-color: var(--navy); color: #fff; }
+    .field { display: flex; flex-direction: column; gap: .35rem; font-size: .8rem; font-weight: 700; }
+    .field--full { grid-column: 1 / -1; }
+    .input { width: 100%; padding: .75rem .85rem; border: 1px solid var(--line-strong); border-radius: var(--r-sm); background: var(--sky); font-size: .92rem; font-weight: 400; color: var(--ink); }
+    .input:focus { outline: none; border-color: var(--teal); box-shadow: 0 0 0 3px rgba(184, 137, 47, .18); }
+    textarea.input { resize: vertical; min-height: 4.5rem; }
+    .form-grid { display: grid; gap: .9rem; grid-template-columns: 1fr; }
+    @media (min-width: 640px) { .form-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    .check { display: flex; align-items: center; gap: .5rem; font-size: .88rem; font-weight: 600; cursor: pointer; }
+    .check input { width: 1.15rem; height: 1.15rem; accent-color: var(--teal); }
+    .row { display: flex; gap: .5rem; flex-wrap: wrap; align-items: center; }
+    .spread { display: flex; gap: .75rem; flex-wrap: wrap; align-items: center; justify-content: space-between; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: .4rem; padding: .65rem 1.15rem; border: 0; border-radius: var(--r-sm); font-size: .88rem; font-weight: 700; background: var(--teal); color: #fff; transition: background .16s ease, transform .16s ease; }
+    .btn:hover { background: var(--teal-dark); }
+    .btn:active { transform: scale(.98); }
+    .btn--light { background: var(--sky); color: var(--ink); border: 1px solid var(--line); }
+    .btn--light:hover { background: #e2eaff; }
+    .btn--danger { background: #fee2e2; color: var(--red); }
+    .btn--danger:hover { background: #fecaca; }
+    .btn--sm { padding: .45rem .75rem; font-size: .8rem; }
+    .btn--block { width: 100%; }
+    .count { font-size: .85rem; font-weight: 400; color: var(--muted); }
+    .items { display: grid; gap: .6rem; }
+    .item { display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; background: var(--white); border: 1px solid var(--line); border-radius: var(--r); padding: .65rem; box-shadow: var(--shadow-sm); }
+    .item--off { opacity: .6; }
+    .item__thumb { width: 3.5rem; height: 3.5rem; border-radius: var(--r-sm); object-fit: cover; background: var(--sky); flex-shrink: 0; }
+    .item__body { flex: 1; min-width: 9rem; }
+    .item__body b { display: block; font-size: .95rem; }
+    .item__meta { font-size: .78rem; color: var(--muted); }
+    .item__actions { display: flex; gap: .35rem; flex-wrap: wrap; }
+    .section-title { font-size: 1.1rem; font-weight: 800; }
+    .hint { font-size: .78rem; color: var(--muted); font-weight: 400; }
+    .group-title { font-weight: 800; font-size: .95rem; padding-top: .75rem; border-top: 1px solid var(--line); }
+    .foot { padding-block: 1.5rem 2.5rem; text-align: center; font-size: .78rem; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap top__inner">
+      <span class="top__brand">
+        <img src="brand/logo-bassnere.jpg" alt="" onerror="this.onerror=null;this.src='brand/logo-bassnere.svg'" /> Bassnèré Market — Admin
+      </span>
+      <span class="top__links">
+        <a href="index.html" target="_blank" rel="noopener">Voir le site</a>
+        <button class="hidden" id="out" type="button">Déconnexion</button>
+      </span>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="note hidden" id="demo">
+      Mode local actif (les modifications sont stockées dans ce navigateur).
+    </div>
+
+    <form class="card card--narrow hidden" id="login">
+      <h1 class="section-title">Connexion Administration</h1>
+      <label class="field" for="em">Email
+        <input class="input" id="em" type="email" required placeholder="vous@exemple.com" />
+      </label>
+      <label class="field" for="pw">Mot de passe
+        <input class="input" id="pw" type="password" required placeholder="••••••••" />
+      </label>
+      <button class="btn btn--block" type="submit">Se connecter</button>
+      <p class="msg msg--err" id="lerr"></p>
+      <p class="hint">Pas encore de compte ? <a href="#" id="signup"><b>Créer mon compte administrateur</b></a></p>
+    </form>
+
+    <div class="card card--narrow hidden" id="activate">
+      <h1 class="section-title">Compte à activer</h1>
+      <p class="hint">
+        Exécutez cette ligne dans le SQL Editor de Neon pour activer ce compte administrateur :
+      </p>
+      <textarea class="input" id="act-sql" readonly rows="2"></textarea>
+      <div class="row">
+        <button class="btn" id="act-retry" type="button">Vérifier</button>
+        <button class="btn btn--light" id="act-out" type="button">Déconnexion</button>
+      </div>
+    </div>
+
+    <div class="hidden" id="panel" style="display: flex; flex-direction: column; gap: var(--gap);">
+      <nav class="tabs" aria-label="Sections">
+        <button class="tab is-on" type="button" data-t="lun">Montures</button>
+        <button class="tab" type="button" data-t="site">Réglages du site</button>
+      </nav>
+      <p class="msg" id="msg"></p>
+
+      <section id="t-lun" style="display: flex; flex-direction: column; gap: var(--gap);">
+        <form class="card" id="f-lun">
+          <h2 class="section-title" id="lt">Ajouter une monture</h2>
+          <input type="hidden" id="l-id" />
+          <div class="form-grid">
+            <label class="field field--full" for="l-nom">Nom de la monture *
+              <input class="input" id="l-nom" required placeholder="Ex : Monture Browline Noir & Argent" />
+            </label>
+            <label class="field field--full" for="l-desc">Description courte
+              <input class="input" id="l-desc" placeholder="Ex : Monture browline bicolore, style rétro" />
+            </label>
+            <label class="field" for="l-prix">Prix de vente (FCFA) *
+              <input class="input" id="l-prix" type="number" min="0" step="500" value="4000" required />
+            </label>
+            <label class="field" for="l-genre">Public
+              <select class="input" id="l-genre">
+                <option value="mixte">Mixte</option>
+                <option value="homme">Homme</option>
+                <option value="femme">Femme</option>
+              </select>
+            </label>
+            <label class="field" for="l-type">Type de verres
+              <select class="input" id="l-type">
+                <option value="vue">Optique / Vue</option>
+                <option value="bluelight">Anti-lumière bleue</option>
+                <option value="solaire">Solaire</option>
+              </select>
+            </label>
+            <label class="field" for="l-forme">Forme
+              <select class="input" id="l-forme">
+                <option value="rect">Rectangulaire</option>
+                <option value="ronde">Ronde</option>
+                <option value="panto">Panto</option>
+                <option value="aviateur">Aviateur</option>
+                <option value="papillon">Papillon</option>
+                <option value="carree">Carrée</option>
+              </select>
+            </label>
+            <label class="field" for="l-img">Photo (laisser vide si existante)
+              <input class="input" id="l-img" type="file" accept="image/*" />
+            </label>
+            <label class="check field--full">
+              <input id="l-dispo" type="checkbox" checked /> Disponible sur le site
+            </label>
+            <div class="row field--full">
+              <button class="btn" type="submit">Enregistrer la monture</button>
+              <button class="btn btn--light hidden" id="l-cancel" type="button">Annuler</button>
+            </div>
+          </div>
+        </form>
+
+        <div>
+          <div class="spread">
+            <h2 class="section-title">Catalogue <span class="count" id="l-n"></span></h2>
+            <div class="row">
+              <button class="btn btn--light btn--sm hidden" id="seed" type="button">Importer les 7 modèles de départ</button>
+            </div>
+          </div>
+          <div class="items" id="l-list" style="margin-top: .75rem;"></div>
+        </div>
+      </section>
+
+      <section class="hidden" id="t-site">
+        <form class="card" id="f-site">
+          <h2 class="section-title">Textes, contacts, &amp; expédition</h2>
+          <div class="form-grid" id="s-fields"></div>
+          <div class="row">
+            <button class="btn" type="submit">Enregistrer les réglages</button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <p class="foot">Bassnèré Market — Espace de gestion</p>
+
+  <script>
+  window.FV_SEED = [
+    { id: 'b1', nom: 'Monture Browline Noir & Argent', description: 'Monture browline bicolore, dessus noir et cerclage argenté, style rétro chic.', prix: 4000, genre: 'mixte', type: 'vue', forme: 'rect', disponible: true, image_url: 'images/lunettes/modele-01.jpg' },
+    { id: 'b2', nom: 'Monture Papillon Dorée', description: 'Monture papillon fine en métal doré, disponible en plusieurs coloris de branches.', prix: 4000, genre: 'femme', type: 'vue', forme: 'papillon', disponible: true, image_url: 'images/lunettes/modele-02.jpg' },
+    { id: 'b3', nom: 'Monture Rectangulaire GOOBA Noir & Or', description: 'Monture rectangulaire robuste, alliage noir mat et branches dorées.', prix: 4000, genre: 'homme', type: 'vue', forme: 'rect', disponible: true, image_url: 'images/lunettes/modele-05.jpg' },
+    { id: 'b4', nom: 'Monture Carrée PELME Noir', description: 'Monture carrée en métal noir, ligne épurée et moderne.', prix: 4000, genre: 'mixte', type: 'vue', forme: 'carree', disponible: true, image_url: 'images/lunettes/modele-06.jpg' },
+    { id: 'b5', nom: 'Monture Browline Noir Fin', description: 'Monture browline fine tout en noir, détail décoratif sur les charnières.', prix: 4000, genre: 'mixte', type: 'vue', forme: 'rect', disponible: true, image_url: 'images/lunettes/modele-07.jpg' },
+    { id: 'b6', nom: 'Monture Titane Rectangulaire AOLAIDI', description: 'Monture rectangulaire en titane, légère et résistante.', prix: 4000, genre: 'homme', type: 'vue', forme: 'rect', disponible: true, image_url: 'images/lunettes/modele-08.jpg' },
+    { id: 'b7', nom: 'Monture Rectangulaire PELME & Titane', description: 'Monture rectangulaire en métal, finitions soignées.', prix: 4000, genre: 'mixte', type: 'vue', forme: 'rect', disponible: true, image_url: 'images/lunettes/modele-11.jpg' }
+  ];
+  window.Store = {
+    defaults: { QUARTIER: 'Ouagadougou', PHONE_DISPLAY: '+226 57 29 88 44', WHATSAPP: '22657298844', HOURS: 'Contactez-nous pour connaître les horaires', FACEBOOK: '', TIKTOK: '', EXPEDITION_NOTE: 'Contactez-nous pour les modalités de livraison', SLOTS_MORNING: '09h00, 10h00, 11h00', SLOTS_AFTERNOON: '15h00, 16h00, 17h00' },
+    remote: false,
+    async authed() { return this.remote ? (await this.user()) : true; },
+    async user() { return this.remote ? null : { id: 'local' }; },
+    async isAdmin() { return !this.remote; },
+    async login() {},
+    async signup() {},
+    async logout() {},
+    async settings() { return this.defaults; },
+    async saveSettings(s) { Object.assign(this.defaults, s); },
+    async list(table) { return table === 'lunettes' ? (JSON.parse(localStorage.getItem('lunettes') || '[]')) : []; },
+    async save(table, item) { 
+      if (table !== 'lunettes') return;
+      const all = JSON.parse(localStorage.getItem('lunettes') || '[]');
+      const idx = all.findIndex(x => x.id == item.id);
+      if (idx >= 0) all[idx] = { ...all[idx], ...item };
+      else all.push({ id: 'l' + Date.now(), ...item });
+      localStorage.setItem('lunettes', JSON.stringify(all));
+    },
+    async remove(table, id) {
+      if (table !== 'lunettes') return;
+      const all = JSON.parse(localStorage.getItem('lunettes') || '[]');
+      localStorage.setItem('lunettes', JSON.stringify(all.filter(x => x.id != id)));
+    },
+    async upload(file) {
+      return 'data:image/png;base64,' + btoa(await new Promise(r => {
+        const fr = new FileReader();
+        fr.onload = () => r(new Uint8Array(fr.result).reduce((s, b) => s + String.fromCharCode(b), ''));
+        fr.readAsArrayBuffer(file);
+      }));
+    }
+  };
+  </script>
+  <script>
+  (function () {
+    const $ = s => document.querySelector(s);
+    const $$ = s => Array.from(document.querySelectorAll(s));
+    const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+    const say = (t, ok = true) => {
+      const m = $('#msg');
+      m.textContent = t;
+      m.className = 'msg ' + (ok ? 'msg--ok' : 'msg--err');
+      if (ok) setTimeout(() => { if (m.textContent === t) m.textContent = ''; }, 3500);
+    };
+
+    const run = async (fn, ok) => {
+      try { await fn(); if (ok) say(ok); }
+      catch (e) { say('Erreur : ' + (e.message || e), false); }
+    };
+
+    let L = [];
+    let S = {};
+
+    async function boot() {
+      if (!Store.remote) $('#demo').classList.remove('hidden');
+      $('#login').classList.add('hidden');
+      $('#activate').classList.add('hidden');
+
+      if (!(await Store.authed())) { $('#login').classList.remove('hidden'); return; }
+
+      if (Store.remote) {
+        $('#out').classList.remove('hidden');
+        if (!(await Store.isAdmin())) {
+          const u = await Store.user();
+          $('#act-sql').value = "insert into public.admins (user_id) values ('" + (u ? u.id : '?') + "');";
+          $('#activate').classList.remove('hidden');
+          return;
+        }
+      }
+
+      $('#panel').classList.remove('hidden');
+      S = { ...Store.defaults, ...(await Store.settings().catch(() => ({}))) };
+      siteForm();
+      refreshL();
+    }
+
+    $('#login').addEventListener('submit', async e => {
+      e.preventDefault();
+      try { await Store.login($('#em').value, $('#pw').value); boot(); }
+      catch (err) { $('#lerr').textContent = err.message; }
+    });
+
+    $('#signup').addEventListener('click', async e => {
+      e.preventDefault();
+      const em = $('#em').value.trim();
+      const pw = $('#pw').value;
+      if (!em || pw.length < 8) { $('#lerr').textContent = 'Email + mot de passe (8 car. min).'; return; }
+      try {
+        await Store.signup(em, pw);
+        $('#lerr').textContent = "Compte créé. Connectez-vous.";
+      } catch (err) { $('#lerr').textContent = err.message; }
+    });
+
+    $('#act-retry').addEventListener('click', () => boot());
+    $('#act-out').addEventListener('click', () => { Store.logout(); location.reload(); });
+    $('#out').addEventListener('click', () => { Store.logout(); location.reload(); });
+
+    $$('.tab').forEach(b => b.addEventListener('click', () => {
+      $$('.tab').forEach(x => x.classList.toggle('is-on', x === b));
+      ['lun', 'site'].forEach(t => {
+        const el = $('#t-' + t);
+        if (el) el.classList.toggle('hidden', t !== b.dataset.t);
+      });
+    }));
+
+    async function refreshL() {
+      try { L = await Store.list('lunettes'); }
+      catch (e) {
+        L = [];
+        $('#l-list').innerHTML = '';
+        $('#l-n').textContent = '';
+        return say('Base locale active.', true);
+      }
+      $('#l-n').textContent = '(' + L.length + ')';
+      $('#seed').classList.toggle('hidden', !(Store.remote && L.length === 0));
+      $('#l-list').innerHTML = L.map(m => {
+        return `<div class="item ${m.disponible === false ? 'item--off' : ''}">
+          <img class="item__thumb" src="${esc(m.image_url)}" alt="" />
+          <div class="item__body">
+            <b>${esc(m.nom)}</b>
+            <span class="item__meta">
+              <strong>${m.prix > 0 ? Number(m.prix).toLocaleString('fr-FR') + ' FCFA' : 'Prix sur demande'}</strong>
+              · ${esc(m.genre)} · ${esc(m.forme)}${m.disponible === false ? ' · masquée' : ''}
+            </span>
+          </div>
+          <div class="item__actions">
+            <button class="btn btn--light btn--sm" type="button" data-e="${m.id}">Modifier</button>
+            <button class="btn btn--light btn--sm" type="button" data-t="${m.id}">${m.disponible === false ? 'Afficher' : 'Masquer'}</button>
+            <button class="btn btn--danger btn--sm" type="button" data-d="${m.id}">Supprimer</button>
+          </div>
+        </div>`;
+      }).join('');
+    }
+
+    const lReset = () => {
+      $('#f-lun').reset();
+      $('#l-id').value = '';
+      $('#l-prix').value = 4000;
+      $('#lt').textContent = 'Ajouter une monture';
+      $('#l-cancel').classList.add('hidden');
+    };
+    $('#l-cancel').addEventListener('click', lReset);
+
+    $('#seed').addEventListener('click', () => run(async () => {
+      for (const m of window.FV_SEED) { const { id, ...x } = m; await Store.save('lunettes', x); }
+      await refreshL();
+    }, 'Modèles importés ✓'));
+
+    $('#l-list').addEventListener('click', e => {
+      const b = e.target.closest('button');
+      if (!b) return;
+      const id = b.dataset.e || b.dataset.t || b.dataset.d;
+      const m = L.find(x => x.id == id);
+      if (!m) return;
+
+      if (b.dataset.e) {
+        $('#l-id').value = m.id;
+        $('#l-nom').value = m.nom || '';
+        $('#l-desc').value = m.description || '';
+        $('#l-prix').value = m.prix || 4000;
+        $('#l-genre').value = m.genre || 'mixte';
+        $('#l-type').value = m.type || 'vue';
+        $('#l-forme').value = m.forme || 'rect';
+        $('#l-dispo').checked = m.disponible !== false;
+        $('#lt').textContent = 'Modifier la monture';
+        $('#l-cancel').classList.remove('hidden');
+        scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      if (b.dataset.t) run(async () => { await Store.save('lunettes', { id: m.id, disponible: m.disponible === false }); await refreshL(); });
+      if (b.dataset.d && confirm('Supprimer « ' + m.nom + ' » ?')) {
+        run(async () => { await Store.remove('lunettes', m.id); await refreshL(); }, 'Supprimée ✓');
+      }
+    });
+
+    $('#f-lun').addEventListener('submit', e => {
+      e.preventDefault();
+      const id = $('#l-id').value;
+      const file = $('#l-img').files[0];
+      if (!id && !file) return say('Ajoutez une photo.', false);
+      run(async () => {
+        const it = {
+          nom: $('#l-nom').value.trim(),
+          description: $('#l-desc').value.trim(),
+          prix: +$('#l-prix').value || 4000,
+          genre: $('#l-genre').value,
+          type: $('#l-type').value,
+          forme: $('#l-forme').value,
+          disponible: $('#l-dispo').checked
+        };
+        if (id) it.id = id;
+        if (file) it.image_url = await Store.upload(file);
+        await Store.save('lunettes', it);
+        lReset();
+        await refreshL();
+      }, 'Enregistré ✓');
+    });
+
+    const FIELDS = [
+      ['h', 'Expédition'],
+      ['EXPEDITION_NOTE', 'Détails sur la livraison'],
+      ['h', 'Contact'],
+      ['QUARTIER', 'Quartier / ville affichés'],
+      ['PHONE_DISPLAY', 'Téléphone affiché'],
+      ['WHATSAPP', 'Numéro WhatsApp (sans +, ex : 22657298844)'],
+      ['HOURS', "Horaires d'ouverture"],
+      ['FACEBOOK', 'Lien Facebook'],
+      ['TIKTOK', 'Lien TikTok'],
+      ['h', 'Créneaux Rendez-vous'],
+      ['SLOTS_MORNING', 'Créneaux matin (séparés par virgules)'],
+      ['SLOTS_AFTERNOON', "Créneaux après-midi"]
+    ];
+
+    function siteForm() {
+      $('#s-fields').innerHTML = FIELDS.map(([k, l, t]) => {
+        if (k === 'h') return `<h3 class="group-title field--full">${l}</h3>`;
+        if (t === 'area') {
+          return `<label class="field field--full">${l}<textarea class="input" data-k="${k}" rows="2">${esc(S[k])}</textarea></label>`;
+        }
+        return `<label class="field">${l}<input class="input" data-k="${k}" value="${esc(S[k])}" /></label>`;
+      }).join('');
+    }
+
+    $('#f-site').addEventListener('submit', e => {
+      e.preventDefault();
+      run(async () => {
+        $$('[data-k]').forEach(x => { S[x.dataset.k] = x.value.trim(); });
+        S.WHATSAPP = S.WHATSAPP.replace(/\D/g, '');
+        await Store.saveSettings(S);
+        siteForm();
+      }, 'Réglages enregistrés ✓');
+    });
+
+    boot();
+  })();
+  </script>
+</body>
+</html>
