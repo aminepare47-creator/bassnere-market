@@ -7,9 +7,9 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <title>Bassnèré Market — Fiche produit</title>
-  <link rel="icon" type="image/jpeg" href="brand/logo-bassnere.jpg" />
-  <link rel="apple-touch-icon" href="brand/logo-bassnere.jpg" />
+  <title>Bassnéré Market — Fiche produit</title>
+  <link rel="icon" type="image/jpeg" href="brand/bassnéré-market.jpg" />
+  <link rel="apple-touch-icon" href="brand/bassnéré-market.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -287,9 +287,9 @@
   <header class="topbar">
     <div class="wrap topbar__inner">
       <a href="index.html#catalogue" class="brand">
-        <img src="brand/logo-bassnere.jpg" alt="Logo Bassnèré Market" onerror="this.onerror=null;this.src='brand/logo-bassnere.svg'" />
+        <img src="brand/bassnéré-market.jpg" alt="Logo Bassnéré Market" />
         <div>
-          <div style="font-size:1rem;">Bassnèré Market</div>
+          <div style="font-size:1rem;">Bassnéré Market</div>
           <small>Ouagadougou</small>
         </div>
       </a>
@@ -302,13 +302,13 @@
       <div class="layout">
         <section class="card product-photo">
           <div class="product-photo__frame">
-            <img id="mainImage" src="images/lunettes/modele-01.jpg" alt="Produit Bassnèré Market" />
+            <img id="mainImage" src="images/lunettes/modele-01.jpg" alt="Produit Bassnéré Market" />
           </div>
         </section>
 
         <section class="card product-info">
           <div class="eyebrow">Monture premium</div>
-          <h1 id="title">Monture Bassnèré Market</h1>
+          <h1 id="title">Monture Bassnéré Market</h1>
           <div class="price" id="price">0 FCFA</div>
 
           <div class="option-grid" id="priceOptions" aria-label="Choisir le type de prix"></div>
@@ -365,7 +365,7 @@
     document.getElementById('mainImage').src = item.image_url || 'images/lunettes/modele-01.jpg';
     document.getElementById('mainImage').alt = item.nom;
     document.getElementById('title').textContent = item.nom;
-    document.getElementById('description').textContent = item.description || 'Monture Bassnèré Market.';
+    document.getElementById('description').textContent = item.description || 'Monture Bassnéré Market.';
 
     const priceOptions = document.getElementById('priceOptions');
     function renderPriceChoice() {
@@ -380,7 +380,7 @@
 
       const buyLink = document.getElementById('buyLink');
       const message = encodeURIComponent(
-        'Bonjour Bassnèré Market, je souhaite commander la monture : ' + item.nom + ' (' + selected.label + '). Est-elle disponible ?'
+        'Bonjour Bassnéré Market, je souhaite commander la monture : ' + item.nom + ' (' + selected.label + '). Est-elle disponible ?'
       );
       buyLink.href = 'https://wa.me/22657298844?text=' + message;
     }

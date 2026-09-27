@@ -8,16 +8,16 @@
 
   <!-- Aperçu du lien partagé (WhatsApp, Facebook…) — bannière avec le logo -->
   <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Bassnèré Market" />
-  <meta property="og:title" content="Bassnèré Market — Lunetterie à Ouagadougou" />
+  <meta property="og:site_name" content="Bassnéré Market" />
+  <meta property="og:title" content="Bassnéré Market — Lunetterie à Ouagadougou" />
   <meta property="og:description" content="L'art du regard sahélien à Ouagadougou. Montures, verres correcteurs et solaires ajustés en atelier, avec livraison partout au Burkina Faso." />
-  <meta property="og:image" content="https://raw.githubusercontent.com/aminepare47-creator/bassnere-market/main/brand/logo-bassnere.jpg" />
+  <meta property="og:image" content="https://raw.githubusercontent.com/aminepare47-creator/bassnere-market/main/brand/bassn%C3%A9r%C3%A9-market.jpg" />
   <meta property="og:image:type" content="image/jpeg" />
-  <meta property="og:image:alt" content="Logo Bassnèré Market" />
+  <meta property="og:image:alt" content="Logo Bassnéré Market" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Bassnèré Market — Lunetterie à Ouagadougou" />
+  <meta name="twitter:title" content="Bassnéré Market — Lunetterie à Ouagadougou" />
   <meta name="twitter:description" content="L'art du regard sahélien à Ouagadougou. Montures, verres correcteurs et solaires ajustés en atelier, avec livraison partout au Burkina Faso." />
-  <meta name="twitter:image" content="https://raw.githubusercontent.com/aminepare47-creator/bassnere-market/main/brand/logo-bassnere.jpg" />
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/aminepare47-creator/bassnere-market/main/brand/bassn%C3%A9r%C3%A9-market.jpg" />
   <meta name="theme-color" content="#b8892f" />
 
   <!-- Anti-cache strict pour garantir les mises à jour immédiates -->
@@ -25,8 +25,8 @@
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
 
-  <link rel="icon" type="image/jpeg" href="brand/logo-bassnere.jpg" />
-  <link rel="apple-touch-icon" href="brand/logo-bassnere.jpg" />
+  <link rel="icon" type="image/jpeg" href="brand/bassnéré-market.jpg" />
+  <link rel="apple-touch-icon" href="brand/bassnéré-market.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -34,7 +34,7 @@
 
   <style>
     /* =====================================================================
-      Bassnèré Market — Styles intégrés, Mobile-first
+      Bassnéré Market — Styles intégrés, Mobile-first
        ===================================================================== */
     :root {
       --blue: #b8892f;
@@ -835,6 +835,17 @@
     .home-feature__copy p { max-width: 55ch; color: var(--muted); line-height: 1.7; }
     .home-feature__points { display: flex; flex-wrap: wrap; gap: .5rem; }
     .home-feature__points span { padding: .45rem .7rem; border: 1px solid var(--blue-line); border-radius: var(--r-pill); background: #fff; color: var(--blue-dark); font-size: .76rem; font-weight: 800; }
+    .atelier-panel { display: grid; gap: clamp(1.25rem, 3vw, 2.5rem); align-items: center; }
+    .atelier-panel__photo { position: relative; min-height: 17rem; overflow: hidden; border: 1px solid var(--carbon-line); border-radius: var(--r-lg); background: var(--carbon-soft); }
+    .atelier-panel__photo img { width: 100%; height: 100%; min-height: 17rem; object-fit: cover; }
+    .atelier-panel__copy { display: flex; flex-direction: column; align-items: flex-start; gap: .9rem; }
+    .atelier-panel__copy h2 { font-size: clamp(1.7rem, 3.4vw, 2.6rem); }
+    .atelier-panel__copy p { max-width: 58ch; color: #cbd5e1; line-height: 1.75; }
+    .atelier-points { display: grid; width: 100%; gap: .65rem; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); }
+    .atelier-point { display: flex; align-items: flex-start; gap: .6rem; padding: .8rem; border: 1px solid var(--carbon-line); border-radius: var(--r); background: rgba(255,255,255,.04); }
+    .atelier-point .icon { color: #e8c36d; }
+    .atelier-point strong { display: block; font-size: .82rem; }
+    .atelier-point span:last-child { display: block; margin-top: .15rem; color: #94a3b8; font-size: .74rem; }
     .feature-grid {
       display: grid;
       gap: 0.65rem;
@@ -1430,6 +1441,8 @@
       .home-feature { grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 4vw, 3.5rem); }
       .home-feature__photo { min-height: 22rem; }
       .home-feature__photo img { min-height: 22rem; }
+      .atelier-panel { grid-template-columns: 1fr 1.05fr; }
+      .atelier-panel__photo, .atelier-panel__photo img { min-height: 25rem; }
       .frames-grid, .cat-grid { grid-template-columns: repeat(4, 1fr); }
       .footer-grid { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: row; justify-content: space-between; }
@@ -1449,10 +1462,10 @@
   <!-- ================= En-tête Desktop ================= -->
   <header class="site-header">
     <div class="wrap header__inner">
-      <a class="brand" href="#accueil" aria-label="Bassnèré Market — accueil">
-        <img class="brand__logo" src="brand/logo-bassnere.jpg" alt="Logo Bassnèré Market" onerror="this.onerror=null;this.src='brand/logo-bassnere.svg'" />
+      <a class="brand" href="#accueil" aria-label="Bassnéré Market — accueil">
+        <img class="brand__logo" src="brand/bassnéré-market.jpg" alt="Logo Bassnéré Market" />
         <span class="brand__text">
-          <span class="brand__name">BASSNÈRÉ <span>MARKET</span></span>
+          <span class="brand__name">BASSNÉRÉ <span>MARKET</span></span>
           <span class="brand__meta" data-set="QUARTIER">Ouagadougou</span>
         </span>
       </a>
@@ -1481,7 +1494,7 @@
       <div class="wrap">
         <div class="hero__panel">
           <div class="hero__copy">
-            <span class="eyebrow"><span class="icon material-symbols-outlined">verified</span> Bassnèré Market · Ouagadougou</span>
+            <span class="eyebrow"><span class="icon material-symbols-outlined">verified</span> Bassnéré Market · Ouagadougou</span>
             <h1 class="hero__title">L’art du regard sahélien, <span>à Ouagadougou</span></h1>
             <p class="hero__text">
               Montures, verres correcteurs et solaires — taillés et ajustés dans notre atelier à Ouagadougou.
@@ -1497,9 +1510,9 @@
           </div>
 
           <div class="hero__media">
-            <img src="images/lunettes/modele-03.jpg" alt="Sélection de montures Bassnèré Market" />
+            <img src="images/lunettes/modele-03.jpg" alt="Sélection de montures Bassnéré Market" />
             <span class="hero__tag">
-              <span class="dot-live"></span> Bassnèré Market · Ouagadougou
+              <span class="dot-live"></span> Bassnéré Market · Ouagadougou
             </span>
           </div>
         </div>
@@ -1531,13 +1544,13 @@
       </div>
     </section>
 
-    <!-- ================= Style Bassnèré ================= -->
+    <!-- ================= Style Bassnéré ================= -->
     <section class="section section--alt" id="home-feature" aria-labelledby="home-feature-title">
       <div class="wrap">
         <div class="home-feature">
           <div class="home-feature__photo">
-            <img src="images/lunettes/modele-05.jpg" alt="Monture sélectionnée par Bassnèré Market" loading="lazy" />
-            <span class="home-feature__badge"><span class="icon material-symbols-outlined">auto_awesome</span> Le style Bassnèré</span>
+            <img src="images/lunettes/modele-05.jpg" alt="Monture sélectionnée par Bassnéré Market" loading="lazy" />
+            <span class="home-feature__badge"><span class="icon material-symbols-outlined">auto_awesome</span> Le style Bassnéré</span>
           </div>
           <div class="home-feature__copy">
             <span class="eyebrow">Votre style, votre regard</span>
@@ -1556,6 +1569,28 @@
       </div>
     </section>
 
+    <!-- ================= Atelier Bassnéré ================= -->
+    <section class="section section--dark" id="home-workshop" aria-labelledby="atelier-title">
+      <div class="wrap">
+        <div class="atelier-panel">
+          <div class="atelier-panel__photo">
+            <img src="images/lunettes/modele-09.jpg" alt="Une monture de la collection Bassnéré Market" loading="lazy" />
+          </div>
+          <div class="atelier-panel__copy">
+            <span class="eyebrow eyebrow--light"><span class="icon material-symbols-outlined">handyman</span> Le savoir-faire Bassnéré</span>
+            <h2 id="atelier-title">Le bon regard commence par le bon ajustement.</h2>
+            <p>À Ouagadougou, nous vous accompagnons dans le choix de votre monture et de vos verres, puis nous préparons un ajustement pensé pour votre confort. Et votre commande peut vous rejoindre partout au Burkina Faso.</p>
+            <div class="atelier-points">
+              <div class="atelier-point"><span class="icon material-symbols-outlined">visibility</span><div><strong>Conseil personnalisé</strong><span>Un choix guidé selon votre style.</span></div></div>
+              <div class="atelier-point"><span class="icon material-symbols-outlined">tune</span><div><strong>Ajustement en atelier</strong><span>Le confort au quotidien.</span></div></div>
+              <div class="atelier-point"><span class="icon material-symbols-outlined">local_shipping</span><div><strong>Livraison nationale</strong><span>Partout au Burkina Faso.</span></div></div>
+            </div>
+            <a class="btn btn--primary" href="#rendez-vous"><span class="icon material-symbols-outlined">calendar_month</span> Parlons de votre monture</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ================= Nouveautés ================= -->
     <section class="section" id="nouveautes">
       <div class="wrap">
@@ -1563,7 +1598,7 @@
           <div>
             <span class="eyebrow">✨ Nouveautés</span>
             <h2 class="section-title">Nouveautés</h2>
-            <p class="section-lead">Nos dernières montures disponibles chez Bassnèré Market.</p>
+            <p class="section-lead">Nos dernières montures disponibles chez Bassnéré Market.</p>
           </div>
           <a class="btn btn--outline btn__small" href="#catalogue">
             Voir tout le catalogue <span class="icon material-symbols-outlined">chevron_right</span>
@@ -1589,7 +1624,7 @@
         <div class="section-head">
           <span class="eyebrow">Haute technologie</span>
           <h2 class="section-title">Solutions verres &amp; traitements</h2>
-          <p class="section-lead">Découvrez nos solutions de verres et demandez conseil à Bassnèré Market.</p>
+          <p class="section-lead">Découvrez nos solutions de verres et demandez conseil à Bassnéré Market.</p>
         </div>
 
         <div class="grid grid--2">
@@ -1645,7 +1680,7 @@
       <div class="wrap">
         <div class="expertise">
           <div class="expertise__photo">
-            <img src="images/lunettes/modele-09.jpg" alt="Montures Bassnèré Market" loading="lazy" />
+            <img src="images/lunettes/modele-09.jpg" alt="Montures Bassnéré Market" loading="lazy" />
           </div>
           <div>
             <span class="eyebrow"><span class="icon material-symbols-outlined">verified</span> Accompagnement</span>
@@ -1794,7 +1829,7 @@
     <section class="section section--alt" id="rendez-vous">
       <div class="wrap">
         <div class="section-head">
-          <span class="eyebrow"><span class="icon material-symbols-outlined">calendar_month</span> Bassnèré Market</span>
+          <span class="eyebrow"><span class="icon material-symbols-outlined">calendar_month</span> Bassnéré Market</span>
           <h2 class="section-title">Prendre rendez-vous en ligne</h2>
           <p class="section-lead">Choisissez votre motif, jour et heure. Confirmation instantanée.</p>
         </div>
@@ -2017,11 +2052,11 @@
                 <span class="icon material-symbols-outlined" style="color:var(--blue);">verified</span>
                 Demandes de devis
               </div>
-              <p class="field__hint">Écrivez à Bassnèré Market pour toute question sur les prix et options.</p>
+              <p class="field__hint">Écrivez à Bassnéré Market pour toute question sur les prix et options.</p>
             </div>
 
             <div class="card">
-              <h3 style="font-size:1rem;">Bassnèré Market</h3>
+              <h3 style="font-size:1rem;">Bassnéré Market</h3>
               <ul style="list-style:none; display:grid; gap:0.5rem; margin-top:0.5rem; font-size:0.88rem; color:var(--muted);">
                 <li>✓ Montures vérifiées et ajustées</li>
                 <li>✓ Contact direct sur WhatsApp</li>
@@ -2041,7 +2076,7 @@
       <div class="wrap">
         <div class="section-head">
           <span class="eyebrow eyebrow--light">Nous trouver</span>
-          <h2 class="section-title">Bassnèré Market — Ouagadougou</h2>
+          <h2 class="section-title">Bassnéré Market — Ouagadougou</h2>
           <p class="section-lead">Contactez la boutique pour toute information ou demande de devis.</p>
         </div>
 
@@ -2075,15 +2110,15 @@
       <div class="footer-grid">
         <div>
           <a class="brand" href="#accueil">
-            <img class="brand__logo" src="brand/logo-bassnere.jpg" alt="Logo Bassnèré Market" onerror="this.onerror=null;this.src='brand/logo-bassnere.svg'" />
+            <img class="brand__logo" src="brand/bassnéré-market.jpg" alt="Logo Bassnéré Market" />
             <span class="brand__text">
-              <span class="brand__name" style="color:#fff;">BASSNÈRÉ <span>MARKET</span></span>
+              <span class="brand__name" style="color:#fff;">BASSNÉRÉ <span>MARKET</span></span>
               <span class="brand__meta" style="color:#94a3b8;" data-set="QUARTIER">Ouagadougou</span>
             </span>
           </a>
           <p style="margin-top:0.75rem; font-size:0.84rem; color:#94a3b8;">Montures et verres à Ouagadougou.</p>
           <div style="display:flex; gap:0.5rem; margin-top:0.75rem;">
-            <a class="badge badge--on-dark hidden" data-link="facebook" href="#" target="_blank" rel="noopener" aria-label="Suivre Bassnèré Market sur Facebook">
+            <a class="badge badge--on-dark hidden" data-link="facebook" href="#" target="_blank" rel="noopener" aria-label="Suivre Bassnéré Market sur Facebook">
               <span class="icon material-symbols-outlined" aria-hidden="true">thumb_up</span> Suivre sur Facebook
             </a>
           </div>
@@ -2092,7 +2127,7 @@
       </div>
 
       <div class="footer-bottom">
-        <span>© <span id="year">2026</span> Bassnèré Market — Tous droits réservés.</span>
+        <span>© <span id="year">2026</span> Bassnéré Market — Tous droits réservés.</span>
         <span>Lunetterie à Ouagadougou, Burkina Faso.</span>
       </div>
     </div>
@@ -2117,7 +2152,7 @@
       <span>Devis</span>
     </a>
   </nav>
-  <a class="mobile-whatsapp-float" data-link="whatsapp" href="https://wa.me/22657298844" target="_blank" rel="noopener" aria-label="Contacter Bassnèré Market sur WhatsApp">
+  <a class="mobile-whatsapp-float" data-link="whatsapp" href="https://wa.me/22657298844" target="_blank" rel="noopener" aria-label="Contacter Bassnéré Market sur WhatsApp">
     <span class="icon material-symbols-outlined" aria-hidden="true">chat</span>
   </a>
 
@@ -2137,13 +2172,13 @@
         </button>
       </div>
       <div class="product-sheet__head">
-        <h3 id="qv-title">Monture Bassnèré Market</h3>
+        <h3 id="qv-title">Monture Bassnéré Market</h3>
         <span class="product-sheet__price" id="qv-price">16 000 FCFA</span>
         <div class="product-sheet__chips" id="qv-chips"></div>
       </div>
       <p class="product-sheet__desc" id="qv-desc"></p>
       <ul class="product-sheet__features">
-        <li><span class="icon material-symbols-outlined">verified</span> Sélection de montures Bassnèré Market</li>
+        <li><span class="icon material-symbols-outlined">verified</span> Sélection de montures Bassnéré Market</li>
         <li><span class="icon material-symbols-outlined">visibility</span> Conseils sur les options de verres</li>
         <li><span class="icon material-symbols-outlined">local_shipping</span> Livraison partout au Burkina Faso</li>
         <li><span class="icon material-symbols-outlined">storefront</span> Boutique à Ouagadougou</li>
@@ -2227,14 +2262,14 @@
 
     /* 2. Navigation par PAGES : accueil court, catalogue & devis sur leurs propres pages */
     const PAGES = {
-      'accueil': ['accueil', 'home-feature', 'nouveautes', 'ordonnance'],
+      'accueil': ['accueil', 'home-feature', 'home-workshop', 'nouveautes', 'ordonnance'],
       'catalogue': ['catalogue'],
       'verres': ['verres', 'expertise', 'guide'],
       'rendez-vous': ['rendez-vous'],
       'devis': ['devis'],
       'contact': ['contact']
     };
-    const PAGE_IDS = ['accueil', 'home-feature', 'nouveautes', 'ordonnance', 'catalogue', 'verres', 'expertise', 'guide', 'rendez-vous', 'devis', 'contact'];
+    const PAGE_IDS = ['accueil', 'home-feature', 'home-workshop', 'nouveautes', 'ordonnance', 'catalogue', 'verres', 'expertise', 'guide', 'rendez-vous', 'devis', 'contact'];
     const desktopNavLinks = $$('#site-nav a');
     const mobileNavLinks = $$('.mobile-nav-link');
 
@@ -2277,7 +2312,7 @@
       const typeLabel = TLBL[m.type] || (m.genre === 'femme' ? 'Femme' : m.genre === 'homme' ? 'Homme' : 'Mixte');
 
       const waText = encodeURIComponent(
-        'Bonjour Bassnèré Market, je souhaite commander la monture : ' + m.nom + '. Est-elle disponible ?'
+        'Bonjour Bassnéré Market, je souhaite commander la monture : ' + m.nom + '. Est-elle disponible ?'
       );
 
       return `<article class="frame-card" data-id="${esc(m.id || '')}" data-category="${catOf(m)}" data-genre="${esc(m.genre || 'mixte')}" data-type="${esc(m.type || 'vue')}" data-forme="${esc(m.forme || '')}" data-txt="${esc(((m.nom || '') + ' ' + (m.description || '')).toLowerCase())}" data-title="${esc(m.nom)}" data-price="${esc(Number(prix).toLocaleString('fr-FR') + ' FCFA')}" data-desc="${esc(m.description || '')}" data-img="${esc(img)}">
@@ -2386,11 +2421,11 @@
 
     /* Partage d'un produit : la photo part avec le message quand le téléphone le permet */
     async function shareProduct(p) {
-      const nom = (p && (p.nom || p.title)) || 'Monture Bassnèré Market';
+      const nom = (p && (p.nom || p.title)) || 'Monture Bassnéré Market';
       const photo = (p && (p.image_url || p.img)) || '';
       const data = {
-        title: 'Bassnèré Market',
-        text: 'Regardez cette monture : ' + nom + ' — Bassnèré Market, Ouagadougou',
+        title: 'Bassnéré Market',
+        text: 'Regardez cette monture : ' + nom + ' — Bassnéré Market, Ouagadougou',
         url: location.origin + location.pathname
       };
       // 1) Partage AVEC la photo du produit (mobile compatible)
@@ -2429,7 +2464,7 @@
 
     function openQuickView(m) {
       if (!qvModal || !m) return;
-      const title = m.nom || 'Monture Bassnèré Market';
+      const title = m.nom || 'Monture Bassnéré Market';
       const prix = m.prix > 0 ? m.prix : 16000;
       const img = m.image_url || 'images/lunettes/modele-01.jpg';
       qvCurrent = m;
@@ -2454,7 +2489,7 @@
       }
       $('#qv-title').textContent = title;
       $('#qv-price').textContent = Number(prix).toLocaleString('fr-FR') + ' FCFA';
-      $('#qv-desc').textContent = m.description || 'Monture disponible chez Bassnèré Market à Ouagadougou.';
+      $('#qv-desc').textContent = m.description || 'Monture disponible chez Bassnéré Market à Ouagadougou.';
       const chips = [];
       if (m.type && TLBL[m.type]) chips.push(TLBL[m.type]);
       if (m.genre) chips.push(m.genre === 'femme' ? 'Femme' : m.genre === 'homme' ? 'Homme' : 'Mixte');
@@ -2464,7 +2499,7 @@
       const link = $('#qv-whatsapp-link');
       if (link) {
         link.setAttribute('href', 'https://wa.me/' + C.WHATSAPP + '?text=' + encodeURIComponent(
-          'Bonjour Bassnèré Market, je souhaite commander la monture : ' + title + '. Est-elle disponible ?'
+          'Bonjour Bassnéré Market, je souhaite commander la monture : ' + title + '. Est-elle disponible ?'
         ));
       }
       // Vous aimerez aussi
@@ -2659,7 +2694,7 @@
           alert('Veuillez indiquer votre nom et numéro de téléphone.');
           return;
         }
-        const msg = 'Bonjour Bassnèré Market, je souhaite confirmer mon rendez-vous :\n' +
+        const msg = 'Bonjour Bassnéré Market, je souhaite confirmer mon rendez-vous :\n' +
           '• Motif : ' + selectedMotif + '\n' +
           '• Créneau : ' + selectedDay + ' à ' + selectedTime + '\n' +
           '• Nom : ' + name + '\n' +
@@ -2708,7 +2743,7 @@
         const tierEl = document.querySelector('input[name="frame_tier"]:checked');
         const tier = tierEl ? tierEl.value : 'Monture au choix';
         const file = fileInput && fileInput.files[0] ? fileInput.files[0].name : '';
-        const msg = 'Bonjour Bassnèré Market, demande de devis :\n' +
+        const msg = 'Bonjour Bassnéré Market, demande de devis :\n' +
           '• Nom : ' + name + '\n' +
           '• Numéro WhatsApp : +226 ' + phone + '\n' +
           '• Option monture : ' + tier + '\n' +
