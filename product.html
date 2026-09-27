@@ -402,7 +402,7 @@
 
     const relatedEl = document.getElementById('related');
     relatedEl.innerHTML = related.map(m => `
-      <a class="mini-card" href="products/${encodeURIComponent(m.id)}.html">
+      <a class="mini-card" href="product.html?id=${encodeURIComponent(m.id)}">
         <img src="${esc(m.image_url || 'images/lunettes/modele-01.jpg')}" alt="${esc(m.nom)}" />
         <div>
           <strong>${esc(m.nom)}</strong>

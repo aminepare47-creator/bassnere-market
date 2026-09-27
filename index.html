@@ -2486,10 +2486,13 @@
     async function shareProduct(p) {
       const nom = (p && (p.nom || p.title)) || 'Monture Bassnéré Market';
       const photo = (p && (p.image_url || p.img)) || '';
+      const pageUrl = (p && p.id)
+        ? location.origin + '/products/' + encodeURIComponent(String(p.id)) + '.html'
+        : location.origin + location.pathname;
       const data = {
         title: 'Bassnéré Market',
         text: 'Regardez cette monture : ' + nom + ' — Bassnéré Market, Ouagadougou',
-        url: location.origin + location.pathname
+        url: pageUrl
       };
       // 1) Partage AVEC la photo du produit (mobile compatible)
       if (photo) {
@@ -2587,7 +2590,7 @@
         const shareBtn = e.target.closest('[data-share]');
         if (shareBtn) {
           const card = shareBtn.closest('.frame-card');
-          if (card) shareProduct({ nom: card.dataset.title, image_url: card.dataset.img });
+          if (card) shareProduct({ id: card.dataset.id, nom: card.dataset.title, image_url: card.dataset.img });
           return;
         }
         if (e.target.closest('a')) return;

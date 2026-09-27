@@ -1,2 +1,4 @@
-# Les icônes sont intégrées au site ; les essais de polices locales sont inutilisés.
-/assets/fonts/*.woff2
+# Fichiers temporaires courants (aucun dossier de ce type n'est utilisé par le site)
+*.log
+.DS_Store
+Thumbs.db
