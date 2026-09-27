@@ -27,12 +27,27 @@
 
   <link rel="icon" type="image/jpeg" href="brand/bassnéré-market.jpg" />
   <link rel="apple-touch-icon" href="brand/bassnéré-market.jpg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet" />
-
   <style>
+    /* Icônes converties en symboles intégrés, sans police ni requête réseau. */
+    .material-symbols-outlined { font-size: 0; }
+    .icon--chat {
+      position: relative;
+      width: 1.1em;
+      height: .82em;
+      border: 1.5px solid currentColor;
+      border-radius: .22em;
+    }
+    .icon--chat::after {
+      content: '';
+      position: absolute;
+      left: .08em;
+      bottom: -.22em;
+      width: .24em;
+      height: .24em;
+      border-left: 1.5px solid currentColor;
+      transform: skew(-28deg);
+    }
+
     /* =====================================================================
       Bassnéré Market — Styles intégrés, Mobile-first
        ===================================================================== */
@@ -1457,6 +1472,38 @@
       to { opacity: 1; }
     }
   </style>
+  <script>
+    (() => {
+      const icons = {
+        chat: '', verified: '✓', eyeglasses: '◉', calendar_month: '▦',
+        local_shipping: '➜', schedule: '◷', call: '☎', auto_awesome: '✦',
+        handyman: '⚒', visibility: '◉', tune: '☷', chevron_right: '›',
+        devices: '▣', wb_sunny: '☼', shield: '⬡', face: '●',
+        center_focus_strong: '◎', circle: '○', egg: '◯', crop_square: '□',
+        favorite: '♥', psychology: '◉', photo_camera: '▧', search: '⌕',
+        lens_blur: '◉', trip_origin: '◎', crop_16_9: '▭', flight: '✈',
+        event_available: '✓', receipt_long: '▤', check_circle: '✓', bolt: 'ϟ',
+        add_a_photo: '＋', send: '➤', location_on: '⌖', contact_phone: '☎',
+        thumb_up: '👍', home: '⌂', close: '×', zoom_in: '＋', storefront: '▣',
+        share: '↗'
+      };
+      const convert = node => {
+        if (!(node instanceof Element)) return;
+        const targets = node.matches('.material-symbols-outlined')
+          ? [node]
+          : Array.from(node.querySelectorAll('.material-symbols-outlined'));
+        targets.forEach(icon => {
+          const name = icon.textContent.trim();
+          icon.textContent = Object.prototype.hasOwnProperty.call(icons, name) ? icons[name] : '•';
+          icon.classList.remove('material-symbols-outlined');
+          if (name === 'chat') icon.classList.add('icon--chat');
+        });
+      };
+      new MutationObserver(records => records.forEach(record => record.addedNodes.forEach(convert)))
+        .observe(document.documentElement, { childList: true, subtree: true });
+      document.addEventListener('DOMContentLoaded', () => convert(document.body), { once: true });
+    })();
+  </script>
 </head>
 <body>
   <!-- ================= En-tête Desktop ================= -->
