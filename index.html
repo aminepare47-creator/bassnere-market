@@ -11,12 +11,13 @@
   <meta property="og:site_name" content="Bassnèré Market" />
   <meta property="og:title" content="Bassnèré Market — Lunetterie à Ouagadougou" />
   <meta property="og:description" content="Montures et verres à Ouagadougou. Contactez Bassnèré Market sur WhatsApp." />
-  <meta property="og:image" content="images/lunettes/modele-01.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Monture Bassnèré Market" />
+  <meta property="og:image" content="https://raw.githubusercontent.com/aminepare47-creator/bassnere-market/main/brand/logo-bassnere.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:alt" content="Logo Bassnèré Market" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="images/lunettes/modele-01.jpg" />
+  <meta name="twitter:title" content="Bassnèré Market — Lunetterie à Ouagadougou" />
+  <meta name="twitter:description" content="Montures et verres à Ouagadougou. Contactez Bassnèré Market sur WhatsApp." />
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/aminepare47-creator/bassnere-market/main/brand/logo-bassnere.jpg" />
   <meta name="theme-color" content="#b8892f" />
 
   <!-- Anti-cache strict pour garantir les mises à jour immédiates -->
@@ -24,7 +25,8 @@
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
 
-  <link rel="icon" href="brand/logo-bassnere.svg" />
+  <link rel="icon" type="image/jpeg" href="brand/logo-bassnere.jpg" />
+  <link rel="apple-touch-icon" href="brand/logo-bassnere.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -2372,7 +2374,7 @@
 
     function openProductPage(id) {
       if (!id) return;
-      window.location.href = 'product.html?id=' + encodeURIComponent(String(id));
+      window.location.href = 'products/' + encodeURIComponent(String(id)) + '.html';
     }
 
     /* 4. Modale Aperçu */

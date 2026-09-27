@@ -8,7 +8,8 @@
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
   <title>Bassnèré Market — Fiche produit</title>
-  <link rel="icon" href="brand/logo-bassnere.jpg" onerror="this.onerror=null;this.src='brand/logo-bassnere.svg'" />
+  <link rel="icon" type="image/jpeg" href="brand/logo-bassnere.jpg" />
+  <link rel="apple-touch-icon" href="brand/logo-bassnere.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -404,7 +405,7 @@
 
     const relatedEl = document.getElementById('related');
     relatedEl.innerHTML = related.map(m => `
-      <a class="mini-card" href="product.html?id=${encodeURIComponent(m.id)}">
+      <a class="mini-card" href="products/${encodeURIComponent(m.id)}.html">
         <img src="${esc(m.image_url || 'images/lunettes/modele-01.jpg')}" alt="${esc(m.nom)}" />
         <div>
           <strong>${esc(m.nom)}</strong>
