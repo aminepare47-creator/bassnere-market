@@ -235,7 +235,7 @@
     { id: 'b7', nom: 'Monture Rectangulaire PELME & Titane', description: 'Monture rectangulaire en métal, finitions soignées.', prix: 4000, genre: 'mixte', type: 'vue', forme: 'rect', disponible: true, image_url: 'images/lunettes/modele-11.jpg' }
   ];
   window.Store = {
-    defaults: { QUARTIER: 'Ouagadougou', PHONE_DISPLAY: '+226 57 29 88 44', WHATSAPP: '22657298844', HOURS: 'Contactez-nous pour connaître les horaires', FACEBOOK: '', TIKTOK: '', EXPEDITION_NOTE: 'Contactez-nous pour les modalités de livraison', SLOTS_MORNING: '09h00, 10h00, 11h00', SLOTS_AFTERNOON: '15h00, 16h00, 17h00' },
+    defaults: { QUARTIER: 'Ouagadougou', PHONE_DISPLAY: '+226 57 29 88 44', WHATSAPP: '22657298844', HOURS: 'Du lundi au samedi, de 8h à 18h', FACEBOOK: '', TIKTOK: '', EXPEDITION_NOTE: 'Livraison partout au Burkina Faso', SLOTS_MORNING: '09h00, 10h00, 11h00', SLOTS_AFTERNOON: '15h00, 16h00, 17h00' },
     remote: false,
     async authed() { return this.remote ? (await this.user()) : true; },
     async user() { return this.remote ? null : { id: 'local' }; },
